@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Scroll</title>
+</head>
+<body>
+  <section>
+    <div>
+      <p>
+        Coding is <span id='message'>coding</span>
+      </p>
+    </div>
+  </section>
+
+  <script>
+    const words = ['fun', 'exciting', 'doing things'];
+    const span = document.getElementById('message');
+    span.innerText = '';
+    let wordCounter = 0;
+    let charCount = 0;
+
+    console.dir(span);
+
+    function update() {
+      const word = words[wordCounter];
+
+      if (word[charCount] === ' ') {
+        span.innerHTML += '&nbsp;';
+      } else {
+        span.innerHTML += word[charCount];
+      }
+      charCount++;
+
+      if (word.length + 1 === charCount) {
+        charCount = 0;
+        span.innerText = '';
+        wordCounter = ++wordCounter % words.length;
+
+        // if (wordCounter === words.length) {
+        //   wordCounter = 0;
+        // }
+      }
+    }
+
+    setInterval(update, 300);
+  </script>
+</body>
+</html>
